@@ -1,0 +1,41 @@
+{
+  "best_model": "XGBoost",
+  "features": [
+    "id",
+    "age",
+    "sex",
+    "dataset",
+    "trestbps",
+    "chol",
+    "fbs",
+    "thalach",
+    "exang",
+    "oldpeak",
+    "ca",
+    "cp_asymptomatic",
+    "cp_atypical angina",
+    "cp_non-anginal",
+    "cp_typical angina",
+    "restecg_lv hypertrophy",
+    "restecg_normal",
+    "restecg_st-t abnormality",
+    "slope_downsloping",
+    "slope_flat",
+    "slope_upsloping",
+    "thal_fixed defect",
+    "thal_normal",
+    "thal_reversable defect"
+  ],
+  "continuous_cols": [
+    "age",
+    "trestbps",
+    "chol",
+    "thalach",
+    "oldpeak"
+  ],
+  "metrics": {
+    "accuracy": 0.8967,
+    "roc_auc": 0.9603,
+    "f1": 0.9108
+  }
+}
