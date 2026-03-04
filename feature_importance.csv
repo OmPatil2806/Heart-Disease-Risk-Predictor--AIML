@@ -1,0 +1,25 @@
+feature,importance,rank,importance_pct
+dataset,0.13172269,1,13.17
+ca,0.1092851,2,10.93
+cp_asymptomatic,0.10911249,3,10.91
+exang,0.10255936,4,10.26
+thal_reversable defect,0.092062764,5,9.21
+thal_normal,0.08773346,6,8.77
+id,0.08567018,7,8.57
+sex,0.035643462,8,3.56
+oldpeak,0.034801293,9,3.48
+slope_upsloping,0.026897296,10,2.69
+age,0.025169984,11,2.52
+cp_atypical angina,0.022930471,12,2.29
+slope_flat,0.020225326,13,2.02
+thalach,0.019043759,14,1.9
+chol,0.01812804,15,1.81
+restecg_lv hypertrophy,0.01679107,16,1.68
+cp_typical angina,0.013063192,17,1.31
+restecg_normal,0.0126969395,18,1.27
+trestbps,0.012186994,19,1.22
+fbs,0.011107085,20,1.11
+slope_downsloping,0.010134804,21,1.01
+cp_non-anginal,0.003034204,22,0.3
+restecg_st-t abnormality,0.0,23,0.0
+thal_fixed defect,0.0,24,0.0
