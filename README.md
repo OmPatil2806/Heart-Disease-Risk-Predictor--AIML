@@ -1,20 +1,27 @@
-# HeartGuard AI — Predictive Health Analytics for Preventive Care
+# HeartGuard AI - Predictive Health Analytics for Preventive Care
 
 > AI-powered heart disease risk predictor using Random Forest & XGBoost on the UCI dataset. Features an end-to-end ML pipeline with EDA, preprocessing, hyperparameter tuning, and model evaluation. Includes an interactive Streamlit dashboard for real-time risk prediction and preventive care insights.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)
 ![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.2+-F7931E?style=flat&logo=scikit-learn&logoColor=white)
 ![XGBoost](https://img.shields.io/badge/XGBoost-1.7+-189C3E?style=flat)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-FF4B4B?style=flat&logo=streamlit&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Live-FF4B4B?style=flat&logo=streamlit&logoColor=white)
 ![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=flat&logo=jupyter&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=flat)
+
+---
+
+## Live Demo
+
+**Streamlit Dashboard:** [Heart Disease Risk Predictor](https://heart-disease-risk-predictor--aiml-unfvjfkxxhdusui6pv8epd.streamlit.app/)
+
+> Click the link above to try the live interactive dashboard — no installation required.
 
 ---
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Demo](#demo)
 - [Project Structure](#project-structure)
 - [Dataset](#dataset)
 - [Pipeline](#pipeline)
@@ -58,30 +65,26 @@ heartguard-ai/
 ├── data/
 │   └── heart.csv                             # Heart Disease UCI dataset
 │
-├── outputs/                                  # Generated plots & predictions
-│   ├── target_distribution.png
-│   ├── correlation_heatmap.png
-│   ├── feature_histograms.html
-│   ├── feature_boxplots.png
-│   ├── roc_curves.png
-│   ├── confusion_matrices.png
-│   ├── metrics_comparison.png
-│   └── test_predictions.csv
-│
-├── assets/                                   # README images
-└── README.md
+└── outputs/                                  # Generated plots & predictions
+    ├── target_distribution.png
+    ├── correlation_heatmap.png
+    ├── feature_histograms.html
+    ├── feature_boxplots.png
+    ├── roc_curves.png
+    ├── confusion_matrices.png
+    ├── metrics_comparison.png
+    └── test_predictions.csv
 ```
 
 ---
 
 ## Dataset
 
-
 | Property | Value |
 |----------|-------|
 | Records | 920 (multi-source) / 303 (Cleveland only) |
 | Features | 13 clinical features + 1 target |
-| Target | `num` → binarized to 0 (no disease) / 1 (disease) |
+| Target | `num` binarized to 0 (no disease) / 1 (disease) |
 | Missing Values | Present in `ca`, `thal`, `slope` — handled via median imputation |
 
 ### Feature Reference
@@ -90,16 +93,16 @@ heartguard-ai/
 |---------|-------------|------|
 | `age` | Age in years | Continuous |
 | `sex` | Sex (Male / Female) | Categorical |
-| `cp` | Chest pain type (0–3) | Categorical |
+| `cp` | Chest pain type (0-3) | Categorical |
 | `trestbps` | Resting blood pressure (mmHg) | Continuous |
 | `chol` | Serum cholesterol (mg/dl) | Continuous |
 | `fbs` | Fasting blood sugar > 120 mg/dl | Binary |
-| `restecg` | Resting ECG results (0–2) | Categorical |
+| `restecg` | Resting ECG results (0-2) | Categorical |
 | `thalach` | Maximum heart rate achieved | Continuous |
 | `exang` | Exercise-induced angina | Binary |
 | `oldpeak` | ST depression induced by exercise | Continuous |
 | `slope` | Slope of peak exercise ST segment | Categorical |
-| `ca` | Number of major vessels (0–3) | Ordinal |
+| `ca` | Number of major vessels (0-3) | Ordinal |
 | `thal` | Thalassemia type | Categorical |
 | **`target`** | **Heart disease present (1) or absent (0)** | **Binary** |
 
@@ -109,35 +112,35 @@ heartguard-ai/
 
 ```
 Raw CSV
-   │
-   ▼
+   |
+   v
 Data Cleaning
 (drop irrelevant cols, rename, binarize target)
-   │
-   ▼
+   |
+   v
 Exploratory Data Analysis
 (distributions, correlations, categorical analysis)
-   │
-   ▼
+   |
+   v
 Preprocessing
 (string encoding, one-hot encoding, StandardScaler)
-   │
-   ▼
+   |
+   v
 Feature Engineering
 (age_group, high_chol, hypertension, risk_score)
-   │
-   ▼
+   |
+   v
 Model Training
 (Random Forest + XGBoost with GridSearchCV)
-   │
-   ▼
+   |
+   v
 Evaluation
 (Accuracy, Precision, Recall, F1, ROC-AUC)
-   │
-   ▼
+   |
+   v
 Predictions + Insights
-   │
-   ▼
+   |
+   v
 Streamlit Dashboard
 ```
 
@@ -157,20 +160,20 @@ Both models were tuned using **GridSearchCV** with **5-fold Stratified Cross-Val
 | F1-Score | ~85% | ~86% |
 | ROC-AUC | ~0.92 | ~0.93 |
 
-> Exact values depend on your train/test split and dataset version.
+### Top Risk Factors
 
-### Top Risk Factors (Feature Importance)
-
-1. `thalach` — Maximum heart rate achieved
-2. `ca` — Number of blocked major vessels
-3. `oldpeak` — ST depression on exercise
-4. `cp` — Chest pain type
-5. `thal` — Thalassemia type
-6. `exang` — Exercise-induced angina
-7. `age` — Patient age
-8. `chol` — Serum cholesterol
-9. `trestbps` — Resting blood pressure
-10. `sex` — Patient sex
+| Rank | Feature | Description |
+|------|---------|-------------|
+| 1 | `thalach` | Maximum heart rate achieved |
+| 2 | `ca` | Number of blocked major vessels |
+| 3 | `oldpeak` | ST depression on exercise |
+| 4 | `cp` | Chest pain type |
+| 5 | `thal` | Thalassemia type |
+| 6 | `exang` | Exercise-induced angina |
+| 7 | `age` | Patient age |
+| 8 | `chol` | Serum cholesterol |
+| 9 | `trestbps` | Resting blood pressure |
+| 10 | `sex` | Patient sex |
 
 ---
 
@@ -181,13 +184,13 @@ Both models were tuned using **GridSearchCV** with **5-fold Stratified Cross-Val
 - pip
 - Git
 
-### Step 1 — Clone the Repository
+### Step 1 - Clone the Repository
 ```bash
 git clone https://github.com/YOUR_USERNAME/heartguard-ai.git
 cd heartguard-ai
 ```
 
-### Step 2 — Create a Virtual Environment (Recommended)
+### Step 2 - Create a Virtual Environment
 ```bash
 python -m venv venv
 
@@ -198,47 +201,43 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-### Step 3 — Install Dependencies
+### Step 3 - Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4 — Download the Dataset
+### Step 4 - Download the Dataset
 Place `heart.csv` in the project root directory.
 
-**Option A — Kaggle CLI:**
 ```bash
+# Option A - Kaggle CLI
 pip install kaggle
 kaggle datasets download -d ronitf/heart-disease-uci
 unzip heart-disease-uci.zip
-```
 
-**Option B — Manual:** Download from [Kaggle](https://www.kaggle.com/datasets/ronitf/heart-disease-uci) and place `heart.csv` in the root folder.
+# Option B - Manual download from Kaggle and place heart.csv in root folder
+```
 
 ---
 
 ## Usage
 
 ### Run the Jupyter Notebook
-Open and run all cells sequentially:
 ```bash
 jupyter notebook heart_disease_predictive_analytics.ipynb
 ```
 
-Or in **VS Code** — open the `.ipynb` file and click **Run All**.
-
-Running the notebook will:
+Run all cells sequentially. The notebook will:
 - Train and evaluate both models
 - Generate all plots and save them to `outputs/`
 - Save model artifacts (`*.pkl`, `model_metadata.json`)
-- Write the Streamlit `app.py` file
 
-### Launch the Streamlit Dashboard
+### Launch the Streamlit Dashboard Locally
 ```bash
 streamlit run app.py
 ```
 
-The app will open automatically at `http://localhost:8501`
+Opens automatically at `http://localhost:8501`
 
 ---
 
